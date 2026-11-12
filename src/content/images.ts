@@ -99,27 +99,6 @@ export const images = {
     brief: "The collective. A group in motion, dusk, city behind.",
     tone: "night",
   },
-  shopCap: {
-    alt: "A FOLA cap",
-    placeholder: true,
-    frame: "PL—11",
-    brief: "Product still. Cap, embroidered wordmark, soft shadow.",
-    tone: "studio",
-  },
-  shopTee: {
-    alt: "A FOLA T-shirt",
-    placeholder: true,
-    frame: "PL—12",
-    brief: "Product still. Heavyweight tee, chest wordmark.",
-    tone: "sand",
-  },
-  shopTote: {
-    alt: "A FOLA tote bag",
-    placeholder: true,
-    frame: "PL—13",
-    brief: "Product still. Canvas tote, carried, in daylight.",
-    tone: "studio",
-  },
 } satisfies Record<string, SiteImage>;
 
 export type ImageId = keyof typeof images;

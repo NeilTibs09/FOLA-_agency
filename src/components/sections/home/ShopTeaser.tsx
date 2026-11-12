@@ -2,7 +2,7 @@ import { home } from "@/content/home";
 import { products } from "@/content/products";
 import { rich } from "@/lib/rich";
 import { Section } from "@/components/layout/Section";
-import { EditorialImage } from "@/components/media/EditorialImage";
+import { ProductArt } from "@/components/media/ProductArt";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { TextLink } from "@/components/ui/TextLink";
@@ -30,16 +30,12 @@ export function ShopTeaser() {
         </div>
       </div>
 
-      <ul className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 md:mt-20 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-8 xl:px-12 min-[100rem]:mx-auto min-[100rem]:max-w-[100rem]">
+      <ul className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 md:mt-20 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-8 xl:px-12 min-[100rem]:mx-auto min-[100rem]:max-w-[100rem]">
         {products.map((product, i) => (
           <li key={product.name} className="w-[70vw] shrink-0 snap-start sm:w-[44vw] md:w-auto">
             <Reveal delay={i * 100}>
-              <div className="relative aspect-[4/5]">
-                <EditorialImage
-                  id={product.image}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 70vw"
-                />
+              <div className="group relative aspect-[4/5]">
+                <ProductArt kind={product.art} />
               </div>
               <div className="mt-4 flex items-baseline justify-between gap-4 border-t border-fg pt-3">
                 <h3 className="display text-2xl md:text-3xl">{product.name}</h3>
@@ -50,6 +46,8 @@ export function ShopTeaser() {
           </li>
         ))}
       </ul>
+
+      <p className="shell label mt-8 text-muted md:mt-10">{shop.note}</p>
     </Section>
   );
 }

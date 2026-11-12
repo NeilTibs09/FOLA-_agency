@@ -77,6 +77,7 @@ export const home = {
     status: "Coming soon",
     headline: "The first drop is *on its way*.",
     body: "FOLA essentials are in the works. Considered pieces, made to be worn out.",
+    note: "Illustrated concepts. Final pieces may differ.",
     cta: { label: "Preview the shop", href: "/shop" },
   },
 

@@ -33,6 +33,7 @@ export function EditorialImage({
       className={cn(
         "isolate overflow-hidden",
         fill ? "absolute inset-0" : "relative",
+        image.src && "photo",
         className,
       )}
     >
@@ -48,7 +49,7 @@ export function EditorialImage({
             style={{ objectPosition: image.focal ?? "50% 50%" }}
           />
           {image.placeholder && (
-            <span className="label absolute bottom-3 left-3 bg-ink/70 px-2 py-1 text-paper backdrop-blur-sm">
+            <span className="label absolute bottom-3 left-3 z-10 bg-ink/70 px-2 py-1 text-paper backdrop-blur-sm">
               Placeholder
             </span>
           )}

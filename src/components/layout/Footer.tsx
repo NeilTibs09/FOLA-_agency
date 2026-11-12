@@ -20,7 +20,7 @@ export function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-9 items-center text-lg transition-colors hover:text-accent"
+                  className="inline-flex min-h-11 items-center text-lg transition-colors hover:text-accent"
                 >
                   {item.label}
                 </Link>
@@ -33,7 +33,7 @@ export function Footer() {
           <h2 className="label text-muted">Connect</h2>
           <ul className="mt-5 space-y-1 text-lg">
             {socials.map((social) => (
-              <li key={social.label} className="flex min-h-9 items-center">
+              <li key={social.label} className="flex min-h-11 items-center">
                 {social.href ? (
                   <a
                     href={social.href}
@@ -48,13 +48,13 @@ export function Footer() {
                 )}
               </li>
             ))}
-            <li className="flex min-h-9 items-center">
+            <li className="flex min-h-11 items-center">
               {site.email ? (
                 <a href={`mailto:${site.email}`} className="transition-colors hover:text-accent">
                   {site.email}
                 </a>
               ) : (
-                <Link href="/contact" className="transition-colors hover:text-accent">
+                <Link href="/contact" className="flex min-h-11 items-center transition-colors hover:text-accent">
                   Brand enquiries
                 </Link>
               )}
@@ -68,14 +68,14 @@ export function Footer() {
       </div>
 
       <div className="shell">
-        <div className="label flex flex-col gap-3 border-t border-rule py-6 text-muted md:flex-row md:items-center md:justify-between">
+        <div className="label flex flex-col gap-3 border-t border-rule pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 text-muted md:flex-row md:items-center md:justify-between">
           <p>
             © {site.year} {site.name}. All rights reserved.
           </p>
           <ul className="flex gap-6">
             {legalNavigation.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="inline-flex min-h-9 items-center hover:text-fg">
+                <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-fg">
                   {item.label}
                 </Link>
               </li>

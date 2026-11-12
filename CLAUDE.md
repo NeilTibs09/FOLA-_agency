@@ -16,8 +16,11 @@ connected. Mobile presentation is the priority.
 
 ## Status
 
-- Phase 1 (foundation) and Phase 2 (home) are built and awaiting the owner's creative
-  sign-off on the homepage. **Do not start Phase 3 until the homepage is approved.**
+- Phase 1 (foundation) and Phase 2 (home) are built. The owner has approved the
+  homepage layout and design system: **do not redesign or restructure it.**
+- Outstanding before Phase 3: licensed stock photography for the homepage (see
+  "Photography brief"). **Do not start Phase 3 until the owner has reviewed the
+  homepage with photography and confirmed it.**
 - Routes other than `/` do not exist yet and fall through to the branded 404.
 
 Update this section as phases complete.
@@ -128,7 +131,8 @@ Motion: slow image reveals, text rising on scroll, subtle hovers. Honour
 
 Mobile first: design at 390px before desktop. 4:5 and 9:16 media, swipeable galleries,
 full-screen menu, persistent thumb-reach CTA (Apply / Enquire), 16px side gutters,
-minimum 44px touch targets.
+minimum 44px touch targets. The viewport uses `viewport-fit=cover`: anything fixed to
+a screen edge must pad with the matching `env(safe-area-inset-*)`.
 
 ## Imagery
 
@@ -147,6 +151,29 @@ FOLA has no photography or video yet.
   there is no `src` and a visible "Placeholder" tag on stock. Replacing content means
   adding the file, setting `src` and flipping the flag.
 - No testimonials, member names or client logos are invented.
+- Shop products are concepts, not confirmed products. They are drawn as vector
+  illustrations (`ProductArt`), tagged "Concept", never shown as product photographs.
+
+### Photography brief
+
+Still to do, in a session running on the `FOLA-_agency` environment (the Default
+environment blocks Unsplash, including through web fetch).
+
+- Source: Unsplash, free Unsplash Licence only. No Unsplash+ / premium, no AI images.
+- Look at every candidate before accepting it. Reject watermarks, third-party logos,
+  text overlays, posed "stock" clichés and heavy filters.
+- The set must read as one editorial campaign: premium South African lifestyle,
+  fashion, nightlife, beaches, travel, hospitality, models, creators and activations;
+  natural or moody light; Black and mixed-heritage adults well represented; tasteful.
+- The hero matters most: immediate impact, a calm area for the headline, and it must
+  crop well both wide (desktop) and tall (phone).
+- Slots are the entries in `src/content/images.ts`; each entry's `brief` describes the
+  shot. Save files to `public/images/placeholder/`, then set `src`, `width`, `height`,
+  an accurate `alt`, `focal` and `credit` (photographer, photo page, licence). Keep
+  `placeholder: true`.
+- Treatment is already built: `.photo` in `globals.css` applies one grade and grain to
+  every photograph. Tune it there, once, after seeing real photos; check skin tones.
+- Check crops at 390px and 1440px and adjust `focal` per image.
 
 ## Join FOLA: application flow
 
@@ -278,5 +305,5 @@ The site must be fully reviewable before Supabase and Resend are configured.
 - Final client confirmation of the 18+ membership policy.
 - Domain name, sender email address, team inbox addresses, social handles (placeholders
   until Phase 4; see `src/content/site.ts`).
-- Sourcing interim stock photography, or supplying FOLA photography.
+- Interim stock photography (see "Photography brief"), then real FOLA photography.
 - Legal review of the draft privacy, consent and image-use wording.

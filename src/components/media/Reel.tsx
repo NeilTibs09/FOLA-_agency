@@ -26,7 +26,7 @@ export function Reel({ label, children }: { label: string; children: ReactNode }
         ref={scroller}
         tabIndex={0}
         aria-label={label}
-        className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 md:gap-5 md:scroll-px-8 md:px-8 xl:scroll-px-12 xl:px-12"
+        className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-px-4 px-4 md:gap-5 md:scroll-px-8 md:px-8 xl:scroll-px-12 xl:px-12"
       >
         {children}
       </ul>

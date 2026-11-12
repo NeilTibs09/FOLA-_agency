@@ -50,7 +50,7 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-40 transition-colors duration-500",
+          "fixed inset-x-0 top-0 z-40 pt-[env(safe-area-inset-top)] transition-colors duration-500",
           overHero
             ? "border-b border-transparent text-paper"
             : "border-b border-ink/10 bg-paper/92 text-ink backdrop-blur-md",
@@ -103,7 +103,7 @@ export function Header() {
         data-theme="dark"
         inert={!open}
         className={cn(
-          "fixed inset-0 z-50 flex flex-col overflow-y-auto transition-[opacity,visibility] duration-500 ease-editorial lg:hidden",
+          "fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain pt-[env(safe-area-inset-top)] transition-[opacity,visibility] duration-500 ease-editorial lg:hidden",
           open ? "visible opacity-100" : "invisible opacity-0",
         )}
       >
@@ -157,7 +157,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="shell shrink-0 pb-8">
+        <div className="shell shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
           <div className="grid grid-cols-2 gap-3">
             <ButtonLink href="/contact" variant="outline">
               Enquire
@@ -166,11 +166,11 @@ export function Header() {
               Apply
             </ButtonLink>
           </div>
-          <ul className="label mt-6 flex gap-6 text-muted">
+          <ul className="label mt-4 flex gap-6 text-muted">
             {socials.map((social) => (
-              <li key={social.label}>
+              <li key={social.label} className="flex min-h-11 items-center">
                 {social.href ? (
-                  <a href={social.href} target="_blank" rel="noreferrer" className="hover:text-fg">
+                  <a href={social.href} target="_blank" rel="noreferrer" className="flex min-h-11 items-center hover:text-fg">
                     {social.label}
                   </a>
                 ) : (

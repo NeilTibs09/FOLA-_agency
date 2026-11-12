@@ -27,19 +27,19 @@ export function StickyCta() {
     <div
       inert={!visible}
       className={cn(
-        "fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 pb-[env(safe-area-inset-bottom)] shadow-[0_-1px_0_rgb(10_10_10/0.12)] transition-transform duration-500 ease-editorial md:hidden",
+        "fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 shadow-[0_-1px_0_rgb(10_10_10/0.12)] transition-transform duration-500 ease-editorial md:hidden",
         visible ? "translate-y-0" : "translate-y-full",
       )}
     >
       <Link
         href="/contact"
-        className="label flex min-h-14 items-center justify-center bg-paper text-ink"
+        className="label box-content flex min-h-14 items-center justify-center bg-paper pb-[env(safe-area-inset-bottom)] text-ink"
       >
         Brands · Enquire
       </Link>
       <Link
         href="/join"
-        className="label flex min-h-14 items-center justify-center bg-accent text-ink"
+        className="label box-content flex min-h-14 items-center justify-center bg-accent pb-[env(safe-area-inset-bottom)] text-ink"
       >
         Talent · Apply
       </Link>
