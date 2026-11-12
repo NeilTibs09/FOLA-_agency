@@ -16,8 +16,24 @@ connected. Mobile presentation is the priority.
 
 ## Status
 
-Planning approved in principle; implementation has not started. See "Phases" below.
+- Phase 1 (foundation) and Phase 2 (home) are built and awaiting the owner's creative
+  sign-off on the homepage. **Do not start Phase 3 until the homepage is approved.**
+- Routes other than `/` do not exist yet and fall through to the branded 404.
+
 Update this section as phases complete.
+
+## Commands
+
+```
+pnpm dev      # local development
+pnpm lint
+pnpm build    # must pass before committing
+```
+
+Cloud sessions set `NODE_ENV=production`; prefix install and dev commands with
+`NODE_ENV=development`. Next.js here is newer than most training data: read the
+relevant guide in `node_modules/next/dist/docs/` before using an unfamiliar API
+(see `AGENTS.md`).
 
 ## Version 1 scope
 
@@ -47,7 +63,9 @@ Keep it focused, polished and maintainable. Do not over-engineer.
 
 - Next.js (App Router), TypeScript, React
 - Tailwind CSS with design tokens as CSS variables
-- Motion for animation; Zod for validation
+- Animation is CSS plus a small `Reveal` component; add the Motion library only if a
+  later interaction genuinely needs it
+- Zod for validation (added in Phase 4)
 - Supabase: Postgres table for applications, private Storage bucket for optional photos
 - Resend: transactional email
 - Vercel: hosting and preview deployments
@@ -116,13 +134,18 @@ minimum 44px touch targets.
 
 FOLA has no photography or video yet.
 
-- Use licensed editorial stock photography as placeholders, reflecting diverse South
-  African models and creators: beaches, nightlife, restaurants, travel, African
-  destinations, brand activations.
+- Placeholders are either designed "plates" (a toned frame showing the shot brief) or
+  licensed editorial stock photography reflecting diverse South African models and
+  creators: beaches, nightlife, restaurants, travel, African destinations, brand
+  activations. The site currently uses plates throughout; stock photography could not
+  be downloaded in the build session (network policy) and is still to be added.
+  A cloud environment named `FOLA-_agency` allows `unsplash.com` and
+  `images.unsplash.com` for this purpose.
 - **Never generate AI images of people, and never present anyone as a FOLA member.**
-- Every placeholder is registered in `src/content/images.ts` with `placeholder: true`,
-  its source and licence. `EditorialImage` shows a small visible "Placeholder" tag for
-  those entries. Replacing content means swapping the file and flipping the flag.
+- Every image is registered in `src/content/images.ts` with `placeholder: true`, a shot
+  brief and, for stock, its source and licence. `EditorialImage` renders a plate when
+  there is no `src` and a visible "Placeholder" tag on stock. Replacing content means
+  adding the file, setting `src` and flipping the flag.
 - No testimonials, member names or client logos are invented.
 
 ## Join FOLA: application flow
@@ -131,8 +154,13 @@ FOLA has no photography or video yet.
 2. Server validates, stores a row in Supabase `applications` with status `pending`,
    emails the FOLA team the full application and sends the applicant a confirmation.
 3. The team reviews in the Supabase table and sets status to `approved` or `declined`.
-4. The outcome email is sent to the applicant. (Mechanism to be confirmed: automatic
-   via a Supabase database webhook to a secret-protected route, or sent manually.)
+4. The outcome email (approved or declined) is sent automatically: a Supabase database
+   webhook on status change calls a route protected by `WEBHOOK_SECRET`.
+   **Exactly one email per status transition.** The route claims the send atomically
+   (for example, an update that sets `outcome_email_status` only where it does not
+   already equal the new status) before emailing, so retries and repeat saves cannot
+   send twice. Changing approved to declined, or back, is a new transition and sends
+   again. No admin dashboard.
 
 Fields:
 
@@ -151,9 +179,11 @@ Fields:
 | Portfolio or social media links | Yes |
 | Photos (up to 3, JPG/PNG/WebP, size-limited) | No |
 
-Age: date of birth is collected, but **no minimum age is enforced until the owner
-confirms the rule.** Minimum age is a single config value (`MIN_APPLICANT_AGE`, unset
-by default). Do not hardcode 18+.
+Age: the intended policy is **18+, subject to final client confirmation.** It stays
+configurable through `MIN_APPLICANT_AGE` and is never hardcoded. When set, the age is
+checked on the server from the date of birth and the form states the requirement.
+The legal drafts must cover POPIA's rules on children (consent of a competent person
+for under-18s), so that the wording is ready whichever way the policy is confirmed.
 
 Consent (each a separate, unticked checkbox; record timestamp and wording version):
 
@@ -164,8 +194,8 @@ Consent (each a separate, unticked checkbox; record timestamp and wording versio
 Storage rules: row-level security on, no public policies; all writes go through the
 server with the service-role key. Photos go to a private bucket.
 
-Spam: honeypot field, minimum fill time and basic rate limiting. No captcha service
-unless spam becomes a problem.
+Spam: hidden honeypot field, minimum fill time and server-side rate limiting. No
+captcha service and no analytics at launch.
 
 ## Contact
 
@@ -212,8 +242,16 @@ and Resend key are server-only.
 | `WEBHOOK_SECRET` | Verifies Supabase status-change webhook (if used) |
 | `MIN_APPLICANT_AGE` | Optional; unset until the age rule is confirmed |
 
-If integration variables are missing in development, forms log the payload instead of
-failing, so the site can be built and reviewed before accounts exist.
+### Demo mode
+
+The site must be fully reviewable before Supabase and Resend are configured.
+
+- A form whose integrations are not configured runs in demo mode and says so, visibly,
+  before and after submission ("Demo mode: this submission was not sent or saved").
+- Never show a real success message unless the submission was actually stored and/or
+  emailed. Never silently discard a real submission: if a configured integration
+  fails, show an error and keep the visitor's input.
+- Demo mode is decided on the server from the environment, never by a client flag.
 
 ## Conventions
 
@@ -237,7 +275,8 @@ failing, so the site can be built and reviewed before accounts exist.
 
 ## Open decisions
 
-- Minimum applicant age (and how applicants under 18 are handled, if allowed).
-- Approval email: automatic on status change, or sent manually by the team.
-- Domain name, sender email address, team inbox addresses, social handles.
+- Final client confirmation of the 18+ membership policy.
+- Domain name, sender email address, team inbox addresses, social handles (placeholders
+  until Phase 4; see `src/content/site.ts`).
+- Sourcing interim stock photography, or supplying FOLA photography.
 - Legal review of the draft privacy, consent and image-use wording.
