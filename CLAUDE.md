@@ -18,9 +18,14 @@ connected. Mobile presentation is the priority.
 
 - Phase 1 (foundation) and Phase 2 (home) are built. The owner has approved the
   homepage layout and design system: **do not redesign or restructure it.**
-- Outstanding before Phase 3: licensed stock photography for the homepage (see
-  "Photography brief"). **Do not start Phase 3 until the owner has reviewed the
-  homepage with photography and confirmed it.**
+- Photography: six owner-approved Unsplash photographs are integrated as tagged
+  placeholders (For Talent, Dining, Travel, Rooftop, Activation, Join CTA). The hero,
+  For Brands, Beach and Nightlife slots still render designed plates. The owner chose
+  to keep the hero plate until the right photograph is sourced or commissioned: three
+  or four diverse South African men and women at a beach at golden hour, ocean
+  visible, negative space for the headline. Do not fill the hero with stock.
+- **Do not start Phase 3 until the owner has reviewed the photography-integrated
+  homepage and confirmed it.**
 - Routes other than `/` do not exist yet and fall through to the branded 404.
 
 Update this section as phases complete.
@@ -141,10 +146,9 @@ FOLA has no photography or video yet.
 - Placeholders are either designed "plates" (a toned frame showing the shot brief) or
   licensed editorial stock photography reflecting diverse South African models and
   creators: beaches, nightlife, restaurants, travel, African destinations, brand
-  activations. The site currently uses plates throughout; stock photography could not
-  be downloaded in the build session (network policy) and is still to be added.
-  A cloud environment named `FOLA-_agency` allows `unsplash.com` and
-  `images.unsplash.com` for this purpose.
+  activations. The site uses a mix of both (see Status). Source stock through the
+  Unsplash connector (search and `download_asset`); files download from
+  `images.unsplash.com`, which the `FOLA-_agency` environment allows.
 - **Never generate AI images of people, and never present anyone as a FOLA member.**
 - Every image is registered in `src/content/images.ts` with `placeholder: true`, a shot
   brief and, for stock, its source and licence. `EditorialImage` renders a plate when
@@ -156,8 +160,8 @@ FOLA has no photography or video yet.
 
 ### Photography brief
 
-Still to do, in a session running on the `FOLA-_agency` environment (the Default
-environment blocks Unsplash, including through web fetch).
+Applies to any slot still showing a plate. The owner selects every photograph from a
+shortlist before it is integrated; never swap one in unapproved.
 
 - Source: Unsplash, free Unsplash Licence only. No Unsplash+ / premium, no AI images.
 - Look at every candidate before accepting it. Reject watermarks, third-party logos,
