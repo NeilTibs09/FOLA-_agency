@@ -37,7 +37,13 @@ export const images = {
     tone: "dusk",
   },
   forBrands: {
-    alt: "A campaign shoot in progress",
+    src: "/images/placeholder/for-brands.jpg",
+    width: 1600,
+    height: 2400,
+    alt: "A camera operator filming a model in a white studio",
+    focal: "50% 45%",
+    credit:
+      "Photo by Sten Rademaker (unsplash.com/@stenrademaker) on Unsplash. Source: https://unsplash.com/photos/tmjzXS3EwNE. Unsplash Licence (free to use).",
     placeholder: true,
     frame: "PL—02",
     brief: "On set. Photographer, model and product, mid-shot.",
@@ -57,14 +63,26 @@ export const images = {
     tone: "night",
   },
   lifeBeach: {
-    alt: "Friends on a beach in the afternoon sun",
+    src: "/images/placeholder/life-beach.jpg",
+    width: 1600,
+    height: 2364,
+    alt: "A model in a headscarf and flowing printed dress dancing on the shoreline",
+    focal: "50% 40%",
+    credit:
+      "Photo by Houcine Ncib (unsplash.com/@houcinencibphotography) on Unsplash. Djerba, Tunisia. Source: https://unsplash.com/photos/HYcCrN8sWSM. Unsplash Licence (free to use).",
     placeholder: true,
     frame: "PL—04",
     brief: "Beach club afternoon. Friends, towels, salt in the air.",
     tone: "sand",
   },
   lifeNightlife: {
-    alt: "Friends at a bar late at night",
+    src: "/images/placeholder/life-nightlife.jpg",
+    width: 1600,
+    height: 2000,
+    alt: "A woman in a black cut-out dress leaning on a glowing bar counter",
+    focal: "45% 45%",
+    credit:
+      "Photo by gabbiistudios (unsplash.com/@gabrielonodegba) on Unsplash. Source: https://unsplash.com/photos/h2oeV53dwVA. Unsplash Licence (free to use).",
     placeholder: true,
     frame: "PL—05",
     brief: "After dark. Low light, flash on, the back table.",
