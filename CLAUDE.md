@@ -18,14 +18,15 @@ connected. Mobile presentation is the priority.
 
 - Phase 1 (foundation) and Phase 2 (home) are built. The owner has approved the
   homepage layout and design system: **do not redesign or restructure it.**
-- Photography: nine owner-approved Unsplash photographs are integrated and stay
-  tagged as placeholders (For Brands, For Talent, Beach, Nightlife, Dining, Travel,
-  Rooftop, Activation, Join CTA). The layout, styling and design direction are
-  approved.
-- Outstanding image slot: the hero. It stays a designed plate until a FOLA-specific
-  shoot (or the right sourced photograph): three or four diverse South African men
-  and women at a beach at golden hour, ocean visible, negative space for the
-  headline. Do not fill the hero with stock.
+- Photography: ten owner-approved Unsplash photographs are integrated and stay
+  tagged as placeholders (Hero, For Brands, For Talent, Beach, Nightlife, Dining,
+  Travel, Rooftop, Activation, Join CTA). The layout, styling and design direction
+  are approved.
+- The hero photograph (silhouetted friends on a shoreline at sunset, Devin Avery) is
+  an **interim** choice the owner approved as a mood image. It is to be replaced by a
+  FOLA-specific shoot: three or four diverse South African men and women at a beach
+  at golden hour, ocean visible, negative space for the headline. Do not swap in
+  other stock without the owner's approval.
 - Phase 3 has not started. The owner said it follows once the remaining photography
   is finalised; confirm with the owner before starting.
 - Routes other than `/` do not exist yet and fall through to the branded 404.

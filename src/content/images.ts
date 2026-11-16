@@ -30,7 +30,13 @@ export type SiteImage = {
 
 export const images = {
   hero: {
-    alt: "Creators on a beach at golden hour",
+    src: "/images/placeholder/hero.jpg",
+    width: 2880,
+    height: 1920,
+    alt: "Friends walking along the shoreline in silhouette at sunset",
+    focal: "62% 30%",
+    credit:
+      "Photo by Devin Avery (unsplash.com/@devintavery) on Unsplash. Source: https://unsplash.com/photos/_023dq-U6H0. Unsplash Licence (free to use). Interim hero until the FOLA shoot.",
     placeholder: true,
     frame: "PL—01",
     brief: "Golden hour on the coast. Three creators, unposed, sea behind them.",
