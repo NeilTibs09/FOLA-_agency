@@ -1,4 +1,5 @@
 import { home } from "@/content/home";
+import { images } from "@/content/images";
 import { site } from "@/content/site";
 import { rich } from "@/lib/rich";
 import { EditorialImage } from "@/components/media/EditorialImage";
@@ -12,12 +13,19 @@ export function Hero() {
       data-theme="dark"
       className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden"
     >
-      <EditorialImage id="hero" fill brief="corner" priority sizes="100vw" />
+      <EditorialImage id="hero" fill brief="corner" priority sizes="100vw" tag={false} />
       {/* Keeps the headline legible over any photograph. */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/30"
       />
+
+      {/* The tag sits clear of the headline and buttons, where it stays readable. */}
+      {"src" in images.hero && images.hero.placeholder && (
+        <span className="label absolute right-4 top-20 bg-ink/70 px-2 py-1 text-paper backdrop-blur-sm md:right-8 md:top-28 xl:right-12">
+          Placeholder
+        </span>
+      )}
 
       <div className="shell relative pb-8 pt-44 md:pb-12 md:pt-52">
         <p className="label mb-5 flex items-center gap-3 md:mb-7">

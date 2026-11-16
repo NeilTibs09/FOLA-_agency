@@ -147,8 +147,8 @@ export function Header() {
                   aria-current={pathname === item.href ? "page" : undefined}
                   className="group flex items-baseline gap-4 py-4"
                 >
-                  <span className="label w-6 text-muted">0{index + 2}</span>
-                  <span className="display text-[clamp(2.4rem,11vw,4.5rem)] transition-colors group-hover:text-accent group-aria-[current=page]:text-accent">
+                  <span className="label w-6 text-muted">0{index + 1}</span>
+                  <span className="display text-[clamp(2.1rem,10vw,4.5rem)] transition-colors group-hover:text-accent group-aria-[current=page]:text-accent">
                     {item.label}
                   </span>
                 </Link>

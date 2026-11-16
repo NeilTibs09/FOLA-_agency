@@ -135,7 +135,7 @@ body {
 
 @utility display-2xl {
   /* Capped by viewport height so a three-line headline fits one screen. */
-  font-size: clamp(3.9rem, min(16.5vw, 18.5svh), 16rem);
+  font-size: clamp(3.5rem, min(16.5vw, 18.5svh), 16rem);
 }
 
 @utility display-xl {

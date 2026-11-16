@@ -11,7 +11,7 @@ export function JoinCta() {
   return (
     <section data-theme="dark" className="relative overflow-hidden">
       <EditorialImage id={join.image} fill brief="none" sizes="100vw" />
-      <div aria-hidden="true" className="absolute inset-0 bg-ink/55" />
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/65 md:bg-ink/55" />
 
       <div className="shell relative py-24 md:py-36 xl:py-44">
         <Eyebrow number="06">{join.label}</Eyebrow>

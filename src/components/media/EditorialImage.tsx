@@ -10,6 +10,8 @@ type Props = {
   brief?: "center" | "corner" | "none";
   sizes?: string;
   priority?: boolean;
+  /** Set false when the parent shows the "Placeholder" tag itself. */
+  tag?: boolean;
   className?: string;
 };
 
@@ -24,6 +26,7 @@ export function EditorialImage({
   brief = "center",
   sizes = "100vw",
   priority = false,
+  tag = true,
   className,
 }: Props) {
   const image: SiteImage = images[id];
@@ -48,7 +51,7 @@ export function EditorialImage({
             className="object-cover"
             style={{ objectPosition: image.focal ?? "50% 50%" }}
           />
-          {image.placeholder && (
+          {tag && image.placeholder && (
             <span className="label absolute bottom-3 left-3 z-10 bg-ink/70 px-2 py-1 text-paper backdrop-blur-sm">
               Placeholder
             </span>
